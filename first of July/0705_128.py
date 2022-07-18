@@ -7,8 +7,8 @@ https://leetcode.com/problems/longest-consecutive-sequence/
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+        # 중복 제거 및 순차 정렬
         preprocessed = sorted(list(set(nums)))
-        print(preprocessed)
         
         if len(preprocessed) == 0:
             return 0
@@ -17,6 +17,7 @@ class Solution:
         maxLen = 1
         tempLen = 1
         
+        # 1일 증가하는 수열을 하나씩 만들고 최장 길이를 maxLen에 담기
         for i in preprocessed[1:]:
             if prevNum + 1 == i:
                 tempLen += 1
@@ -28,3 +29,8 @@ class Solution:
         if tempLen > maxLen:
             maxLen = tempLen
         return maxLen
+
+'''
+Runtime: 512 ms, faster than 66.73% of Python3 online submissions for Longest Consecutive Sequence.
+Memory Usage: 29.1 MB, less than 18.82% of Python3 online submissions for Longest Consecutive Sequence.
+'''
